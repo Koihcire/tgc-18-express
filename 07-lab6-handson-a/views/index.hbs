@@ -1,0 +1,23 @@
+{{#extends "base"}}
+{{#block "content"}}
+<form method="POST">
+    <div>
+        <label>Enter your height</label>
+        <input type="number" step="0.01"  class="form-control" name="height" id="height"/>
+    </div>
+    <div>
+        <label>Enter your weight</label>
+        <input type="number" step="0.01" class="form-control" name="weight" id="weight"/>
+    </div>
+    <div>
+        <label>Select your unit</label>
+        <input type="radio" class="form-check-input" name="unit" value="metric" id="metric" checked/>
+        <label for="metric">Metric (m / kg)</label>
+        <input type="radio" class="form-check-input" name="unit" value="imperial" id="imperial"/>
+        <label for="imperial">Imperial (in / lbs)</label>
+    </div>
+    <input type="submit" class="btn btn-primary mt-3" value="Submit"/>
+
+</form>
+{{/block}}
+{{/extends}}

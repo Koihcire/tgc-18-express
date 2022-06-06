@@ -1,0 +1,44 @@
+{{#extends "base"}}
+{{#block "content"}}
+<form method="POST"> 
+    
+    <div>
+        <label>Enter the food name</label>
+        {{!-- need name attribute for form to be processed by server --}}
+        {{!-- name will be the key --}}
+        <input type="text" class="form-control" name="foodName">
+    </div>
+    <div>
+        <label>Enter the calories</label>
+        {{!-- need name attribute for form to be processed by server --}}
+        {{!-- name will be the key --}}
+        <input type="text" class="form-control" name="calories">
+    </div>
+    <div>
+        <label for="">Select Meal</label>
+        <input type="radio" class="form-check-input" name="meal" value="breakfast"/>
+        <label for="" class="form-check-label">Breakfast</label>
+        <input type="radio" class="form-check-input" name="meal" value="lunch"/>
+        <label for="" class="form-check-label">Lunch</label>
+        <input type="radio" class="form-check-input" name="meal" value="dinner"/>
+        <label for="" class="form-check-label">Dinner</label>
+    </div>
+    <div>
+        <label for="">Select Tags</label>
+        <input type="checkbox" class="form-check-input" name="tags" value="home-cooked"/>
+        <label for="" class="form-check-label">Homecooked</label>
+        <input type="checkbox" class="form-check-input" name="tags" value="oily"/>
+        <label for="" class="form-check-label">Oily</label>
+        <input type="checkbox" class="form-check-input" name="tags" value="vegan"/>
+        <label for="" class="form-check-label">Vegan</label>
+        <input type="checkbox" class="form-check-input" name="tags" value="healthy"/>
+        <label for="" class="form-check-label">Healthy</label>
+        {{!-- if more than 1 check box is checked, get back array. if only 1 checkbox, just string. if no checkbox, key value pair will not return any checkboxes --}}
+    </div>
+    <input type="submit" class="btn btn-primary mt-3" value="Submit"/> 
+    {{!-- submit button must be within form --}}
+    {{!-- if done correctly, should have post error when submitting initially --}}
+
+</form>
+{{/block}}
+{{/extends}}

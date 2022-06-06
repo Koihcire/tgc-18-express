@@ -1,0 +1,37 @@
+{{#extends "base"}}
+{{#block "content"}}
+<h1>Welcome to my movies</h1>
+<a href="/movie/create" class="btn btn-primary">Add a new Movie</a>
+{{!-- CARDS VIEW --}}
+<div id="movie-list">
+    {{#each movies}}
+        <div class="card movie" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{this.title}}</h5>
+                <p class="card-plot">{{this.plot}}</p>
+                <a href="/movie/update/{{this.id}}" class="btn btn-primary">Update</a>
+                <a href="/movie/delete/{{this.id}}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+{{!-- TABLE VIEW --}}
+{{!-- <table class="table">
+    <thead>
+        <tr>
+            <th>Movie title</th>
+            <th>Plot</th>
+        </tr>
+    </thead>
+    {{#each movies}}
+    <tr>
+        <td>{{this.title}}</td>
+        <td>{{this.plot}}</td>
+    </tr>
+    {{/each}}
+</table> --}}
+
+{{/block}}
+{{/extends}}
+

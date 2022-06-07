@@ -5,7 +5,7 @@ const axios = require("axios"); //for access to resful api
 
 const app = express();
 app.set("view engine", "hbs");
-// app.use(express.static("public"));
+app.use(express.static("public"));
 waXon.on(hbs.handlebars);
 waXon.setLayoutPath("./views/layouts");
 app.use(express.urlencoded({extended:false}));
@@ -35,18 +35,15 @@ app.post("/food_sighting/create", async function(req,res){
 
 //edit post
 app.get("/food_sighting/edit/:food_sighting_id", async function(req,res){
-    try{
     let foodSightingId = req.params.food_sighting_id;
     let response = await axios.get(BASE_API_URL + "sighting/" + foodSightingId);
     let foodSighting = response.data;
     res.render("edit_food_form", {
         "description" : foodSighting.description,
         "food" : foodSighting.food,
-        "datetime" : foodSighting.datetime.slice(0, -1)
+        "datetime" : foodSighting.datetime.slice(0, -1),
+        "id" : foodSighting._id
     });
-    } catch(e){
-        console.log(e);
-    }
 })
 app.post("/food_sighting/edit/:food_sighting_id", async function(req,res){
     let data = {
@@ -60,6 +57,21 @@ app.post("/food_sighting/edit/:food_sighting_id", async function(req,res){
     res.redirect("/");
 })
 
+//delete
+app.get("/food_sighting/delete/:food_sighting_id", async function(req,res){
+    let foodSightingId = req.params.food_sighting_id;
+    let response = await axios.get(BASE_API_URL + "sighting/" + foodSightingId);
+    let foodSighting = response.data;
+    res.render("confirm_delete", {
+        "description" : foodSighting.description,
+        "datetime" : foodSighting.datetime.slice(0,-1)
+    });
+})
+app.post("/food_sighting/delete/:food_sighting_id", async function(req,res){
+    let foodSightingId = req.params.food_sighting_id;
+    await axios.delete(BASE_API_URL + "sighting/" + foodSightingId);
+    res.redirect("/");
+})
 
 //open port
 app.listen(3000,function(){

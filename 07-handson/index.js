@@ -65,7 +65,7 @@ app.get("/movie/delete/:movie_id", async function(req,res){
     })
 })
 app.post("/movie/delete/:movie_id", async function(req,res){
-    let response = await axios.delete(BASE_API_URL + "movie/" + req.params.movie_id);
+    await axios.delete(BASE_API_URL + "movie/" + req.params.movie_id);
     res.redirect("/movies");
 })
 

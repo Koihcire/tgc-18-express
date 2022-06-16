@@ -10,6 +10,7 @@
             <th>Description</th>
             <th>Age</th>
             <th>Problems</th>
+            <th>HDB Approved</th>
             <th>Tags</th>
         </tr>
     </thead>
@@ -22,7 +23,10 @@
             <td>{{this.description}}</td>
             <td>{{this.age}}</td>
             <td>{{this.problems}}</td>
+            <td>{{this.hdb}}</td>
             <td>{{this.tags}}</td>
+            <td><a href="/update/{{this._id}}" class="btn btn-sm btn-primary">Edit</a></td>
+            <td><a href="/delete/{{this._id}}" class="btn btn-sm btn-danger">Delete</a></td>
         </tr>
         {{/each}}
     </tbody>

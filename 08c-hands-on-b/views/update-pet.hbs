@@ -1,6 +1,48 @@
 {{#extends "base"}}
 
 {{#block "content"}}
+<h1>Update Pet</h1>
+<form method="POST">
+    <div>
+        <label for="petName">Pet Name:</label>
+        <input type="text" class="form-control" name="name" value="{{record.name}}"/>
+    </div>
+    <div>
+        <label for="breed">Breed:</label>
+        <input type="text" class="form-control" name="breed" value="{{record.breed}}"/>
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <input type="text" class="form-control" name="description" value="{{record.description}}"/>
+    </div>
+    <div>
+        <label for="age">Age:</label>
+        <input type="number" class="form-control" name="age" value="{{record.age}}"/>
+    </div>
+    <div>
+        <label for="problems">Problems [separate problems by comma]:</label>
+        <input type="text" class="form-control" name="problems" value="{{record.problems}}"/>
+    </div>
+    <div>
+        <h6>HDB Approved</h6>
+        <input type="radio" class="form-check-input" name="hdb" id="yes" value="yes" {{#eq record.hdb "yes"}}checked{{/eq}}>
+        <label for="yes">Yes</label>
+        <input type="radio" class="form-check-input" name="hdb" id="no" value="no" {{#eq record.hdb "no"}}checked{{/eq}}>
+        <label for="yes">No</label>
+    </div>
+    <div>
+        <h6>Tags</h6>
+        <input name="tags" class="form-check-input" type="checkbox" value="House Broken" {{#inArray record.tags "House Broken"}}checked{{/inArray}}/>
+        <label class="form-check-label">House broken</label>
+        <input name="tags" class="form-check-input" type="checkbox" value="Vaccinated" {{#inArray record.tags "Vaccinated"}}checked{{/inArray}}/>
+        <label class="form-check-label">Vaccinated</label>
+        <input name="tags" class="form-check-input" type="checkbox" value="Chipped and Fixed" {{#inArray record.tags "Chipped and Fixed"}}checked{{/inArray}}/>
+        <label class="form-check-label">Chipped and fixed</label>
+    </div>
+    <div>
+        <input type="Submit" class="btn btn-primary mt-3"/>
+    </div>
+</form>
 
 {{/block}}
 

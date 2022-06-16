@@ -4,6 +4,9 @@ const hbs = require("hbs");
 const wax = require("wax-on");
 const MongoUtil = require("./MongoUtil");
 const ObjectId = require("mongodb").ObjectId;
+const helpers = require("handlebars-helpers")({
+    "handlebars": hbs.handlebars
+});
 
 //dotenv
 const dotenv = require("dotenv").config();
@@ -56,6 +59,7 @@ async function main (){
         } else if (req.body.tags){
             tags = [req.body.tags];
         }
+        let hdb = req.body.hdb;
 
         let petDocument = {
             "name": name,
@@ -63,6 +67,7 @@ async function main (){
             "description": description,
             "age": age,
             "problems": problems,
+            "hdb": hdb,
             "tags": tags
         };
 
@@ -81,6 +86,51 @@ async function main (){
         res.render("get-pet",{
             "record" : response
         })
+    })
+
+    app.get("/update/:pet_id", async function(req,res){
+        let petId = req.params.pet_id;
+        let response = await db.collection("pet_records").findOne({
+            "_id": ObjectId(petId)
+        });
+
+        res.render("update-pet",{
+            "record" : response
+        })
+    })
+
+    app.post("/update/:pet_id", async function(req,res){
+        let petId = req.params.pet_id;
+        let name = req.body.name;
+        let breed = req.body.breed;
+        let description = req.body.description;
+        let age = req.body.age;
+        let p = req.body.problems;
+        let problems = p.split(",");
+        let tags = [];
+        if (Array.isArray(req.body.tags)){
+            tags = req.body.tags;
+        } else if (req.body.tags){
+            tags = [req.body.tags];
+        }
+        let hdb = req.body.hdb;
+
+        let UpdatedpetDocument = {
+            "name": name,
+            "breed": breed,
+            "description": description,
+            "age": age,
+            "problems": problems,
+            "hdb": hdb,
+            "tags": tags
+        };
+
+        await db.collection("pet_records").updateOne({
+            "_id" : ObjectId(petId)
+        },{
+            "$set" : UpdatedpetDocument
+        });
+        res.redirect("/")
     })
 }
 main();

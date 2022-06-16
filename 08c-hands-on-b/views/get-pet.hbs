@@ -1,0 +1,35 @@
+{{#extends "base"}}
+
+{{#block "content"}}
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Breed</th>
+            <th>Description</th>
+            <th>Age</th>
+            <th>Problems</th>
+            <th>Tags</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{!-- {{#each allPets}} --}}
+        {{#each record}}
+        <tr>
+            <td>{{this._id}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.breed}}</td>
+            <td>{{this.description}}</td>
+            <td>{{this.age}}</td>
+            <td>{{this.problems}}</td>
+            <td>{{this.tags}}</td>
+        </tr>
+        {{!-- {{/each}} --}}
+        {{/each}}
+    </tbody>
+</table>
+
+{{/block}}
+
+{{/extends}}

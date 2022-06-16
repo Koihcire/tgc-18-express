@@ -1,0 +1,43 @@
+{{#extends "base"}}
+
+{{#block "content"}}
+<h1>Add new pet</h1>
+<form method="POST">
+    <div>
+        <label for="petName">Pet Name:</label>
+        <input type="text" class="form-control" name="name"/>
+    </div>
+    <div>
+        <label for="breed">Breed:</label>
+        <input type="text" class="form-control" name="breed"/>
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <input type="text" class="form-control" name="description"/>
+    </div>
+    <div>
+        <label for="age">Age:</label>
+        <input type="number" class="form-control" name="age"/>
+    </div>
+    <div>
+        <label for="problems">Problems [separate problems by comma]:</label>
+        <input type="text" class="form-control" name="problems"/>
+    </div>
+    <div>
+        <label>Tags</label>
+        <input name="tags" class="form-check-input" type="checkbox" value="noLoudNoises"/>
+        <label class="form-check-label">No Loud Noises</label>
+        <input name="tags" class="form-check-input" type="checkbox" value="eatsBugs"/>
+        <label class="form-check-label">Eats Bugs</label>
+        <input name="tags" class="form-check-input" type="checkbox" value="toiletTrained"/>
+        <label class="form-check-label">Toilet Trained</label>
+    </div>
+    <div>
+        <input type="submit" class="btn btn-primary mt-3"/>
+    </div>
+    
+</form>
+
+{{/block}}
+
+{{/extends}}

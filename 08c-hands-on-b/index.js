@@ -10,9 +10,6 @@ const helpers = require("handlebars-helpers")({
 
 //dotenv
 const dotenv = require("dotenv").config();
-//check
-//.env is the environment where the operating system stores its variables
-// console.log(process.env);
 
 const app = express();
 app.set("view engine", "hbs"); //need to tell express we are using hbs file type as view engine
